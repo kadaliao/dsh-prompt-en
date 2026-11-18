@@ -22,7 +22,7 @@
 
 ## 安装
 
-在 DeepSeek Harness 里加入本仓库的索引（**Plugins → Discover → Sources**）：
+在 DeepSeek Harness 里加入 [DSH Plugins](https://github.com/kadaliao/dsh-plugins) 的索引（**Plugins → Discover → Sources**）：
 
 ```
 https://raw.githubusercontent.com/kadaliao/dsh-plugins/main/marketplace.json
@@ -31,11 +31,13 @@ https://raw.githubusercontent.com/kadaliao/dsh-plugins/main/marketplace.json
 然后安装 **Prompt EN**。Discover 属于实验功能 **Custom plugin markets**，看不到的话先在
 **Plugins → Experimental plugins** 里打开。
 
-不用 Discover 的话，把 Git spec 贴进插件管理器：
+不用 Discover 的话，把包名贴进插件管理器：
 
 ```
-git+https://github.com/kadaliao/dsh-plugins.git#main&path:/plugins/prompt-en
+@kadaliao/dsh-prompt-en
 ```
+
+想用还没发布的最新代码，改用 Git spec `git+https://github.com/kadaliao/dsh-prompt-en.git#main`。
 
 装完刷新一次页面。
 
@@ -158,7 +160,7 @@ Host 半看到每条提交的用户消息，去掉宿主只写给模型看的 `<
 <details>
 <summary>开发</summary>
 
-仓库结构、测试和发布清单见 [DEVELOPMENT.zh-CN.md](../../DEVELOPMENT.zh-CN.md)。本插件是同一作者的
+仓库结构、测试和发布清单见 [DEVELOPMENT.zh-CN.md](https://github.com/kadaliao/dsh-plugins/blob/main/DEVELOPMENT.zh-CN.md)。本插件是同一作者的
 Claude Code mod [prompt-en](https://github.com/kadaliao/claude-mods/tree/main/prompt-en)（MIT）的
 DeepSeek Harness 移植版。
 

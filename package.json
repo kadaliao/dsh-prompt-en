@@ -38,10 +38,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kadaliao/dsh-plugins.git",
-    "directory": "plugins/prompt-en"
+    "url": "git+https://github.com/kadaliao/dsh-prompt-en.git"
   },
-  "homepage": "https://github.com/kadaliao/dsh-plugins/tree/main/plugins/prompt-en",
+  "homepage": "https://github.com/kadaliao/dsh-prompt-en#readme",
+  "bugs": "https://github.com/kadaliao/dsh-prompt-en/issues",
   "license": "MIT",
   "keywords": [
     "dsh",

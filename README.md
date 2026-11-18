@@ -24,7 +24,7 @@ exactly as you typed it.
 
 ## Install
 
-Add this repository's index in DeepSeek Harness (**Plugins → Discover → Sources**):
+Add the [DSH Plugins](https://github.com/kadaliao/dsh-plugins) index in DeepSeek Harness (**Plugins → Discover → Sources**):
 
 ```
 https://raw.githubusercontent.com/kadaliao/dsh-plugins/main/marketplace.json
@@ -33,11 +33,13 @@ https://raw.githubusercontent.com/kadaliao/dsh-plugins/main/marketplace.json
 then install **Prompt EN**. The Discover tab is part of the experimental **Custom plugin markets**
 feature; turn it on under **Plugins → Experimental plugins** if you don't see it.
 
-Without Discover, paste the Git spec into the plugin manager:
+Without Discover, paste the package name into the plugin manager:
 
 ```
-git+https://github.com/kadaliao/dsh-plugins.git#main&path:/plugins/prompt-en
+@kadaliao/dsh-prompt-en
 ```
+
+For the latest unreleased code, use the Git spec `git+https://github.com/kadaliao/dsh-prompt-en.git#main` instead.
 
 After installing, refresh the page once.
 
@@ -176,7 +178,7 @@ but the model requests above.
 <summary>Development</summary>
 
 Repository layout, tests, and the release checklist are in
-[DEVELOPMENT.md](../../DEVELOPMENT.md). This plugin is a DeepSeek Harness port of the same author's
+[DEVELOPMENT.md](https://github.com/kadaliao/dsh-plugins/blob/main/DEVELOPMENT.md). This plugin is a DeepSeek Harness port of the same author's
 Claude Code mod [prompt-en](https://github.com/kadaliao/claude-mods/tree/main/prompt-en) (MIT).
 
 </details>
