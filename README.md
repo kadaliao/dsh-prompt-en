@@ -39,6 +39,13 @@ Without Discover, paste the package name into the plugin manager:
 @kadaliao/dsh-prompt-en
 ```
 
+Or from a terminal with the `dsh` CLI (`--profile desktop` for the desktop app; restart Harness
+afterwards):
+
+```
+dsh plugin --profile web add @kadaliao/dsh-prompt-en
+```
+
 For the latest unreleased code, use the Git spec `git+https://github.com/kadaliao/dsh-prompt-en.git#main` instead.
 
 After installing, refresh the page once.

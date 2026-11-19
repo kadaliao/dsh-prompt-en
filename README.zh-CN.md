@@ -37,6 +37,12 @@ https://raw.githubusercontent.com/kadaliao/dsh-plugins/main/marketplace.json
 @kadaliao/dsh-prompt-en
 ```
 
+也可以在终端里用 `dsh` 命令行装（桌面版用 `--profile desktop`，装完重启 Harness）：
+
+```
+dsh plugin --profile web add @kadaliao/dsh-prompt-en
+```
+
 想用还没发布的最新代码，改用 Git spec `git+https://github.com/kadaliao/dsh-prompt-en.git#main`。
 
 装完刷新一次页面。
