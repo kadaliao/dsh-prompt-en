@@ -358,7 +358,7 @@ test('the vocabulary tab, its guide entry, the reminder toast and a bare /vocab 
   const { ctx, seen } = fakeContext();
   exports.apply(ctx);
 
-  assert.deepEqual(seen.injected, ['sidebarRightTabs', 'commandUi']);
+  assert.deepEqual(seen.injected, ['remote', 'remote.pluginManager', 'remoteAccess', 'slots', 'sidebarRightTabs', 'commandUi']);
   const [tab] = seen.tabs;
   assert.equal(tab.kind, 'prompt-en-vocab');
   assert.equal(tab.title(), 'Vocabulary');
