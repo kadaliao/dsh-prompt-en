@@ -312,6 +312,9 @@ const button = (tree, label) => {
 const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
 
 /** The vocabulary pane over a host that serves `cards`, recording what it is sent. */
+/** The plugin's own view inside the update reminder's frame (shared/updates.js). */
+const unframe = (tree) => (tree?.props?.['data-kadaliao-update-frame'] ? tree.children.at(-1).children[0] : tree);
+
 async function mountPane(cards, { deckSize = cards.length } = {}) {
   const { exports, hooks } = await loadClient();
   const { ctx, seen } = fakeContext();
@@ -334,7 +337,7 @@ async function mountPane(cards, { deckSize = cards.length } = {}) {
   await flush();
   const render = () => {
     hooks.rewind();
-    return pane(props);
+    return unframe(pane(props));
   };
   return { render, posts, hooks };
 }
@@ -358,7 +361,7 @@ test('the vocabulary tab, its guide entry, the reminder toast and a bare /vocab 
   const { ctx, seen } = fakeContext();
   exports.apply(ctx);
 
-  assert.deepEqual(seen.injected, ['remote', 'remote.pluginManager', 'remoteAccess', 'slots', 'sidebarRightTabs', 'commandUi']);
+  assert.deepEqual(seen.injected, ['remote', 'remote.pluginManager', 'remoteAccess', 'sidebarRightTabs', 'commandUi']);
   const [tab] = seen.tabs;
   assert.equal(tab.kind, 'prompt-en-vocab');
   assert.equal(tab.title(), 'Vocabulary');

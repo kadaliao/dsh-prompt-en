@@ -52,14 +52,14 @@ After installing, refresh the page once.
 
 ## Updates
 
-About 20 seconds after the page opens, and every six hours after that, the plugin checks for a newer
-version through Harness's own plugin manager. It is the same check as the Versions section in
-**Plugins**, and it asks the npm registry only about `@kadaliao/dsh-*` package names. A new version
-shows up as a card in the bottom-right corner. **Update** has Harness install it, after checking that
-it works with your Harness; if the install fails, the version you had is put back. **Later** hides the
-card for a day, **Skip this version** until the next one. With several of these plugins installed, one
-card covers all of them, including copies too old to check for themselves. Copies installed from a
-folder or from Git are not checked.
+Each time you open the Vocabulary tab (in the right sidebar, or `/vocab`), the plugin checks whether a
+newer version of itself is out; opening it again within a minute reuses the answer, and nothing checks
+in the background. The check goes through Harness's own plugin manager, the same check as the Versions
+section in **Plugins**, and asks the npm registry only about this package. A newer version shows as a
+bar across the top of the tab. **Update** has Harness install it, after checking that it works with
+your Harness; if the install fails, the version you had is put back. While it updates, the tab closes,
+and it opens again once the new version is in. **Later** hides the bar for a day, **Skip this
+version** until the next one. Copies installed from a folder or from Git are not checked.
 
 ## What you see
 
