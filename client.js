@@ -449,7 +449,7 @@ window.__ModuleLoader__.load({
             cursor: disabled ? 'default' : 'pointer',
             border: '1px solid var(--dsw-alias-border-primary, rgba(127,127,127,.35))',
             background: primary ? C.label : 'transparent',
-            color: primary ? 'var(--dsw-alias-label-on-brand, #fff)' : dim ? C.faint : C.primary,
+            color: primary ? 'var(--dsw-alias-label-primary-foreground, #fff)' : dim ? C.faint : C.primary,
           },
         },
         label,
@@ -1514,7 +1514,7 @@ window.__ModuleLoader__.load({
         muted: 'var(--dsw-alias-label-secondary, #646a73)',
         faint: 'var(--dsw-alias-label-tertiary, #8f959e)',
         brand: 'var(--dsw-alias-brand-primary, #4d6bfe)',
-        onBrand: 'var(--dsw-alias-label-on-brand, #fff)',
+        onBrand: 'var(--dsw-alias-label-primary-foreground, #fff)',
         ok: 'var(--dsw-alias-state-success-primary, #2ea121)',
         error: 'var(--dsw-alias-state-error-primary, #d83931)',
       };
