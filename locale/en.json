@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Prompt EN",
-    "description": "Draws English under each prompt: a translation of what you wrote in another language, or a review of what you wrote in English. What it teaches goes into a vocabulary book to review."
+    "description": "Draws English under each prompt: a translation of what you wrote in another language, or a review of what you wrote in English. What it teaches goes into a vocabulary book to review.",
+    "detail": "README.zh-CN.md"
   },
   "label": "EN",
   "translating": "translating…",
