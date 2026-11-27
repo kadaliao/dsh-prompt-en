@@ -7,7 +7,7 @@ window.__ModuleLoader__.load({
 
     const NS = 'prompt-en';
     // This client half's version; test/updates.test.mjs keeps it equal to package.json.
-    const VERSION = '0.2.3';
+    const VERSION = '0.2.4';
     // The version and GitHub link in the vocabulary book's header, from the shared update block once apply(ctx) has run.
     let About = null;
     const STATE_ROUTE = '/__dsh_prompt_en/state';
