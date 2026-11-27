@@ -2,7 +2,7 @@
   "meta": {
     "title": "Prompt EN",
     "description": "在每条 prompt 下方写一行英文：用其他语言写的给出英文，用英文写的给出纠错或更地道的说法；教过你的说法收进生词本复习。",
-    "detail": "README.zh-CN.md"
+    "detail": "README.md"
   },
   "label": "EN",
   "translating": "翻译中…",

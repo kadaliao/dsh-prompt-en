@@ -1,12 +1,11 @@
 # Prompt EN
 
-English | [简体中文](README.zh-CN.md)
+简体中文 | [English](README.en.md)
 
-**English under every prompt you send.**
+**每条 prompt 下面多一行英文。**
 
-Write to your AI in a language that isn't English and see what you meant in English. Write in
-English and get your message checked: the mistakes fixed, or two more natural ways to say it.
-What it teaches goes into a vocabulary book you can review with `/vocab`.
+用中文（或其他语言）写，能看到自己想表达的英文是什么；用英文写，会得到一次检查：改掉错误，或者给出
+两种更自然的说法。教过你的说法会收进生词本，用 `/vocab` 复习。
 
 ```
 > 帮我看看这个构建为什么失败
@@ -19,130 +18,113 @@ What it teaches goes into a vocabulary book you can review with `/vocab`.
   EN ✓  also Make this function async. · Would you mind making this function async?
 ```
 
-It is a caption for you, not part of the conversation: the model still receives your prompt
-exactly as you typed it.
+这一行只是给你的说明，不属于对话：模型收到的仍然是你原样输入的 prompt。
 
-## Install
+## 安装
 
-Add the [DSH Plugins](https://github.com/kadaliao/dsh-plugins) index in DeepSeek Harness (**Plugins → Discover → Sources**):
+在 DeepSeek Harness 里加入 [DSH Plugins](https://github.com/kadaliao/dsh-plugins) 的索引（**Plugins → Discover → Sources**）：
 
 ```
 https://raw.githubusercontent.com/kadaliao/dsh-plugins/main/marketplace.json
 ```
 
-then install **Prompt EN**. The Discover tab is part of the experimental **Custom plugin markets**
-feature; turn it on under **Plugins → Experimental plugins** if you don't see it.
+然后安装 **Prompt EN**。Discover 属于实验功能 **Custom plugin markets**，看不到的话先在
+**Plugins → Experimental plugins** 里打开。
 
-Without Discover, paste the package name into the plugin manager:
+不用 Discover 的话，把包名贴进插件管理器：
 
 ```
 @kadaliao/dsh-prompt-en
 ```
 
-Or from a terminal with the `dsh` CLI (`--profile desktop` for the desktop app; restart Harness
-afterwards):
+也可以在终端里用 `dsh` 命令行装（桌面版用 `--profile desktop`，装完重启 Harness）：
 
 ```
 dsh plugin --profile web add @kadaliao/dsh-prompt-en
 ```
 
-For the latest unreleased code, use the Git spec `git+https://github.com/kadaliao/dsh-prompt-en.git#main` instead.
+想用还没发布的最新代码，改用 Git spec `git+https://github.com/kadaliao/dsh-prompt-en.git#main`。
 
-After installing, refresh the page once.
+装完刷新一次页面。
 
-## Updates
+## 更新
 
-Each time you open the Vocabulary tab (in the right sidebar, or `/vocab`), the plugin checks whether a
-newer version of itself is out; opening it again within a minute reuses the answer, and nothing checks
-in the background. The check goes through Harness's own plugin manager, the same check as the Versions
-section in **Plugins**, and asks the npm registry only about this package. A newer version shows as a
-bar across the top of the tab. **Update** has Harness install it, after checking that it works with
-your Harness; if the install fails, the version you had is put back. While it updates, the tab closes,
-and it opens again once the new version is in. **Later** hides the bar for a day, **Skip this
-version** until the next one. Copies installed from a folder or from Git are not checked.
+每次打开生词本（右侧栏的「生词本」标签页，或输入 `/vocab`），插件会检查一次自己有没有新版本；一分钟内再打开用上次的结果，后台不定时检查。检查走 Harness 自己的插件管理，和「插件」页「版本」一栏是同一个检查，只向 npm 查询这一个包。有新版本时，生词本顶部会出现一条提示：点「更新」由 Harness 安装新版本，装之前先确认它和你的 Harness 兼容，装失败会把原来的版本装回去。更新时生词本会先关闭，装好后自动重新打开。「稍后」一天内不再提醒，「跳过此版本」到下一个版本出来前不再提醒。从本地文件夹或 Git 装的不检查。
 
-## What you see
+## 会看到什么
 
-| Mark | Meaning |
+| 标记 | 含义 |
 | --- | --- |
-| `EN` | A translation of a prompt you wrote in another language. |
-| `EN ✎` amber | Your English had a mistake; the fixed words are green, with the reason. |
-| `EN ✎` blue | Correct English, but a native speaker would phrase it differently. |
-| `EN ✓` | Reads well; two other ways to say it follow. |
+| `EN` | 你用其他语言写的 prompt 的英文。 |
+| `EN ✎` 黄色 | 英文有错；改动的词标绿，并说明原因。 |
+| `EN ✎` 蓝色 | 语法没错，但母语者会换个说法。 |
+| `EN ✓` | 表达自然；后面跟两种其他说法。 |
 
-Terse chat style — lowercase, no final period, "fixed it" — is not flagged as a mistake.
+聊天式的简短写法——全小写、句尾不加句号、`fixed it`——不会被当成错误。
 
-Click a long line (or **more**) to expand it.
+行太长时点它或点 **more** 展开。
 
-## Long prompts
+## 长 prompt
 
-- **Paste freely.** Code blocks and logs are folded into one label such as
-  `[TypeScript code, 60 lines]` before anything is sent, so a huge paste costs a few words.
-- **Long writing in another language gets its gist** — about four sentences (a very long prompt can
-  get twice that), with every request and constraint kept, marked `· gist of 2.5k chars`.
-- **Long English gets its main fixes** (up to five, `"add timeout" → "add a timeout"`) instead of a
-  full rewrite.
+- **大胆粘贴。** 代码块和日志在发送前会被折叠成一个标签，例如 `[TypeScript code, 60 lines]`，
+  再长的粘贴也只花几个词。
+- **长段非英文只给要点**——大约四句（很长的 prompt 可能多一倍），保留每个请求和约束，并标上
+  `· gist of 2.5k chars`。
+- **长英文只列主要修改**（最多五条，`"add timeout" → "add a timeout"`），不整篇重写。
 
-Prompts shorter than three English words (`ok`, `commit it`), slash commands, and work done by a
-delegated subagent are left alone.
+少于三个英文单词的短句（`ok`、`commit it`）、斜杠命令、子代理的工作都不处理。
 
-## Vocabulary book
+## 生词本
 
-What the English under your prompts teaches is kept in a vocabulary book:
+prompt 下方那行英文教过你的东西，会收进生词本：
 
-- **A correction or polish of your English** gives a card of your words and the better ones:
-  `add timeout → add a timeout (article)`. Making the same mistake again sends the card back to the
-  start.
-- **A translation** gives up to two expressions worth learning, picked by one more small request:
-  `顺便 → while you're at it`, `兜底 → fall back to`, `过度设计 → over-engineered`; and at most one
-  sentence whose frame you can reuse: `先别急着提交，等测试跑完再说 → Hold off on committing until the
-  tests finish.`, its frame `Hold off on ___ until ___`. Everyday words, common frames
-  (`Can you ___?`), technical terms and code are skipped, and a pick is kept only when its words are
-  in your prompt and in the English, so nothing made up gets in. Its two sides say the same, no more
-  and no less: `制定完善的开发计划 → draw up a solid development plan`, never `制定` alone.
+- **英文被纠正或润色过**，收一张「你写的 → 更地道的」卡片：`add timeout → add a timeout（article）`。
+  同样的错再犯一次，这张卡片退回从头复习。
+- **中文 prompt 的译文**，多发一次小请求，挑出最多两个值得学的表达：`顺便 → while you're at it`、
+  `兜底 → fall back to`、`过度设计 → over-engineered`；再挑最多一个可以套用的句型，整句背：
+  `先别急着提交，等测试跑完再说 → Hold off on committing until the tests finish.`，句型
+  `Hold off on ___ until ___`。日常词、人人都会的句型（`Can you ___?`）、技术术语、代码都跳过；挑出来的
+  内容必须在你的原文和译文里都找得到才收，不会收进编造的内容；中英两边说的必须是同一件事，不多不少：
+  `制定完善的开发计划 → draw up a solid development plan`，而不是只有 `制定`。
 
-Type `/vocab` to open the **Vocabulary** tab in the right sidebar (it is also in the sidebar's
-guide). It shows the cards that are due, one at a time:
+在输入框输入 `/vocab`，右侧栏会打开「生词本」标签页（侧栏的引导页里也有入口），一张一张复习到期的
+卡片：
 
 ```
-Vocabulary  1 / 3 · 18 in the book
+生词本  1 / 3 · 共 18 条
 
-You wrote   add timeout
-Sentence    Make this function async and add timeout
+你写的  add timeout
+原句    Make this function async and add timeout
 
-[Show answer  f]
+[显示答案  f]
 ```
 
-Under the words is the sentence of your prompt they come from, and with the answer the sentence of
-the English that holds it, each with the words marked, so the two sides can be matched.
+「原句」是这个词在你 prompt 里所在的那一句，「例句」是译文里含答案的那一句，词本身都会标出来，方便两边
+对照。
 
-`f` shows the answer, then `1` forgot, `2` unsure, `3` knew it (Enter picks it), `x` drops the card;
-the buttons do the same. A card you knew waits longer each time (1, 3, 7, 16, 35, then 90 days); one
-you forgot comes back at the end of the sitting and starts over. A sitting holds up to 20 cards.
-When cards are due, a toast says so when you open DeepSeek Harness, at most twice a day.
+按 `f` 显示答案，然后 `1` 忘了、`2` 模糊、`3` 记得（回车就是记得），`x` 删掉这张；点按钮也一样。记得的
+卡片每次隔得更久（1、3、7、16、35 天，最后 90 天）；忘了的在这一轮最后再出一次，并从头开始。一轮最多
+20 张。有到期卡片时，打开 DeepSeek Harness 会弹一条提示，一天最多两次。
 
-**List** in the tab (or `/vocab list`) shows the latest cards and how well you know each.
-**Import earlier prompts** (or `/vocab import`) fills the book from the prompts answered before it:
-the corrections as they stand, and the translations matched back to the prompts they came from,
-eight to a model request. It runs in the background and a toast says what it filed; a prompt
-already filed is never filed twice.
+标签页里的 **列表**（或 `/vocab list`）列出最近收的卡片和每张的熟练度。**导入以前的**（或
+`/vocab import`）把生词本出现之前的 prompt 也导进来：存下的纠错直接收；翻译则找回它当初的原文再挑，
+每 8 条问一次模型。导入在后台进行，完成后弹提示说收了多少；已经收过的 prompt 不会重复收。
 
-## Turn it off
+## 关掉
 
-Type `/prompt-en` in the composer to flip it (`/prompt-en on`, `/prompt-en off`). The choice is
-remembered across sessions.
+在输入框输入 `/prompt-en` 切换（`/prompt-en on`、`/prompt-en off`），选择会记住。
 
-## Settings
+## 设置
 
-Set these on the plugin's row in your profile patch (`cordis.patch.yml`):
+在 profile patch（`cordis.patch.yml`）里这个插件对应的行上设置：
 
-| Key | Default | What it does |
+| 键 | 默认 | 作用 |
 | --- | --- | --- |
-| `enabled` | `true` | Turn the feature off without uninstalling. |
-| `reviewEnglish` | `true` | `false` keeps translations and stops reviewing English prompts. |
-| `collectVocab` | `true` | `false` stops filling the vocabulary book, and its extra request per translation. |
-| `provider` / `model` | your session's | Which model writes the line. Set both to use a cheaper model. |
-| `reasoningEffort` | model default | Pin a reasoning effort, e.g. `low`. |
+| `enabled` | `true` | 不卸载也能关掉功能。 |
+| `reviewEnglish` | `true` | 设为 `false` 只翻译，不审阅英文。 |
+| `collectVocab` | `true` | 设为 `false` 不再往生词本里收，也不再为每条译文多发那次请求。 |
+| `provider` / `model` | 跟随会话 | 用哪个模型写这一行。两个都填就能换成更便宜的模型。 |
+| `reasoningEffort` | 模型默认 | 固定推理档位，例如 `low`。 |
 
 ```yaml
 - id: prompt-en
@@ -155,48 +137,41 @@ Set these on the plugin's row in your profile patch (`cordis.patch.yml`):
     # reasoningEffort: low
 ```
 
-## Cost
+## 费用
 
-One small model request per prompt that needs a line, billed like any other request. Each distinct
-prompt text is read once and cached, so repeating `继续` or reopening a session costs nothing.
+每条需要显示的 prompt 发一次小请求，按普通请求计费。相同的 prompt 文本只读一次并缓存，所以重复发
+`继续`、重新打开会话都不会再花钱。
 
-With the vocabulary book on, a translation costs one more small request to pick its phrases and
-pattern (skipped for a prompt of a few characters); a review costs nothing more. An import costs
-one request per eight earlier translations.
+开着生词本时，每条译文多发一次小请求来挑短语和句型（很短的 prompt 跳过）；纠错不额外花钱。导入时每 8
+条以前的译文发一次请求。
 
-## If something looks wrong
+## 看起来不对时
 
-- **`no translation (empty-reply)`** — the model returned no text. It is retried once
-  automatically; if the line still fails, send the prompt again or write it slightly differently.
-- **No line at all** — prompts sent before installation are not backfilled, and prompts under three
-  English words are skipped on purpose. Also check the plugin is enabled in **Plugins → Installed**.
-- **The line sits in the wrong place or is missing after an update** — refresh the page; the row is
-  drawn by the Web Client half.
-- **French or Spanish is reviewed as English** — the language is detected by script, not by a
-  language model, so only non-Latin scripts are translated.
-- **`/vocab` does nothing, or there is no Vocabulary tab** — the tab needs the right sidebar of
-  DeepSeek Harness 0.2.x; refresh the page once after installing or updating. `/vocab list` and
-  `/vocab import` work without it.
-- **An import leaves prompts out** — it can only file prompts whose answer is still cached (the
-  latest 800) and whose Session is still on disk.
+- **`no translation (empty-reply)`**——模型这次没有返回文本。会自动重试一次；仍然失败的话，重发这条
+  prompt 或稍微改一下措辞即可。
+- **完全没有这一行**——安装之前发过的 prompt 不会补跑；少于三个英文单词的 prompt 是故意跳过的。也确认
+  一下 **Plugins → Installed** 里插件是启用状态。
+- **位置不对或更新后消失**——刷新页面；这一行由 Web Client 半渲染。
+- **法语、西班牙语被当成英文审阅**——语言按文字判断，不经过语言模型，所以只有非拉丁文字才会被翻译。
+- **`/vocab` 没反应，或者没有「生词本」标签页**——标签页需要 DeepSeek Harness 0.2.x 的右侧栏；安装或更新
+  后刷新一次页面。`/vocab list` 和 `/vocab import` 不依赖右侧栏。
+- **导入漏了一些 prompt**——只能导入答案还在缓存里（最近 800 条）、会话还在磁盘上的 prompt。
 
-## How it works
+## 实现
 
-The Host half sees each committed user message, drops the `<system-reminder>` notes a host adds for
-the model alone, folds pastes, and asks your model once to translate or review it. The answer is
-cached on disk and served to the page; the Client half draws it under the prompt. It never writes to
-the session log and never changes what the conversation model sees.
+Host 半看到每条提交的用户消息，去掉宿主只写给模型看的 `<system-reminder>` 块，折叠粘贴内容，调一次
+你的模型去翻译或审阅。答案缓存在本地磁盘并提供给页面；Client 半把它画在 prompt 下面。它不写会话日志，
+也不改变对话模型看到的内容。
 
-The vocabulary book is a file beside the answer cache (`~/.dsh/cache/prompt-en/vocab.json`, up to
-1,000 cards; past that the best-known oldest leave). An import reads the text of each cached
-prompt back from its Session through Harness's session query service; nothing leaves your machine
-but the model requests above.
+生词本是答案缓存旁边的一个文件（`~/.dsh/cache/prompt-en/vocab.json`，最多 1000 张；超出后最熟的老卡片
+先删）。导入时通过 Harness 的会话查询服务读回每条缓存 prompt 的原文；除了上面说的模型请求，没有任何
+内容离开你的电脑。
 
 <details>
-<summary>Development</summary>
+<summary>开发</summary>
 
-Repository layout, tests, and the release checklist are in
-[DEVELOPMENT.md](https://github.com/kadaliao/dsh-plugins/blob/main/DEVELOPMENT.md). This plugin is a DeepSeek Harness port of the same author's
-Claude Code mod [prompt-en](https://github.com/kadaliao/claude-mods/tree/main/prompt-en) (MIT).
+仓库结构、测试和发布清单见 [DEVELOPMENT.md](https://github.com/kadaliao/dsh-plugins/blob/main/DEVELOPMENT.md)。本插件是同一作者的
+Claude Code mod [prompt-en](https://github.com/kadaliao/claude-mods/tree/main/prompt-en)（MIT）的
+DeepSeek Harness 移植版。
 
 </details>
